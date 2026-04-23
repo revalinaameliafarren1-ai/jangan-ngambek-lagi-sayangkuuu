@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Jangan Ngambek 🥺</title>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    background: linear-gradient(#ffe6f0, #ffcce0);
+    padding: 30px;
+}
+
+h2 {
+    color: #ff4d88;
+}
+
+button {
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 15px;
+    background: #ff99cc;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+#jawaban {
+    margin-top: 20px;
+    font-size: 18px;
+    display: none;
+    animation: muncul 0.5s ease;
+}
+
+@keyframes muncul {
+    from {opacity: 0; transform: scale(0.7);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 20px;
+    animation: jatuh 3s linear infinite;
+}
+
+@keyframes jatuh {
+    to {
+        transform: translateY(100vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<h2>Hei kamu… jangan ngambek lagi ya 🥺</h2>
+<p>Aku ga suka kamu diem-dieman 😔</p>
+
+<h3>Kamu masih marah ga? 😤</h3>
+
+<button onclick="jawab('marah')" id="btnMarah">Masih marah 😠</button>
+<button onclick="jawab('engga')">Udah engga 😆</button>
+
+<div id="jawaban"></div>
+
+<script>
+function jawab(status) {
+    let teks = document.getElementById("jawaban");
+
+    if (status === 'marah') {
+        teks.innerHTML = "Yahh jangan gitu dong 😔 sini aku peluk 🤗";
+    } else {
+        teks.innerHTML = "YAYY 😆 aku tau kamu ga bisa lama marah 💗";
+        kasihHati();
+    }
+
+    teks.style.display = "block";
+}
+
+// tombol "marah" kabur 😏
+let btn = document.getElementById("btnMarah");
+btn.addEventListener("mouseover", function() {
+    btn.style.position = "absolute";
+    btn.style.top = Math.random() * 300 + "px";
+    btn.style.left = Math.random() * 300 + "px";
+});
+
+// efek hati jatuh 💕
+function kasihHati() {
+    for (let i = 0; i < 15; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "💗";
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (2 + Math.random()*2) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 3000);
+    }
+}
+</script>
+
+</body>
+</html>
